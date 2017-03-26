@@ -1,0 +1,10 @@
+@import "settings";
+@import "foundation";
+@include foundation-everything;
+
+@import "font-awesome";
+@import "header";
+@import "footer";
+@import "core";
+
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');

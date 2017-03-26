@@ -1,0 +1,24 @@
+{
+  "name": "Recipes",
+  "description": "Recipes",
+  "private": true,
+  "version": "0.1.0",
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "scripts": {
+    "start": "grunt",
+    "watch": "grunt watch",
+    "preinstall": "npm cache clean"
+  },
+  "devDependencies": {
+    "components-font-awesome": "^4.6.3",
+    "foundation-sites": "~6.2",
+    "grunt": "~1.0.1",
+    "grunt-contrib-uglify": "~1.0.1",
+    "grunt-contrib-watch": "~1.0.0",
+    "grunt-npmcopy": "~0.1.0",
+    "grunt-sass": "^2.0.0",
+    "jquery": "~2.2.0"
+  }
+}
