@@ -5,13 +5,47 @@ USER=$(whoami)
 COMMAND=$1
 COMMAND_PARAM=$2
 
-CODE_DIR="/codebase/recipes"
-DATA_DIR="/data/recipes"
-LOG_DIR="/data/recipes/logs";
+CODE_DIR="/home/${USER}/codebase/recipes"
+DATA_DIR="${CODE_DIR}/data"
+LOGS_DIR="${DATA_DIR}/logs";
+CACHE_DIR="${DATA_DIR}/cache";
+
+echo $CODE_DIR;
 
 DOCKER_EXEC="docker exec -u app -it recipes_web /bin/bash -c"
 
-cd "${CODE_DIR}/docker/dev/recipes"
+echo ${CACHE_DIR}
+echo ${LOGS_DIR}
+
+if [ ! -d "${DATA_DIR}" ]; then
+    echo "Creating data directory ${DATA_DIR}";
+    sudo mkdir -p "${DATA_DIR}"
+    sudo chown -R ${USER}:${USER} "${DATA_DIR}"
+fi
+
+if [ ! -d "${LOGS_DIR}" ]; then
+    echo "Creating logs directory ${LOGS_DIR}";
+    sudo mkdir -p "$LOGS_DIR"
+    sudo chown -R ${USER}:${USER} "${LOGS_DIR}"
+
+    echo "setfacl -R -m u:www-data:rwX -m u:${USER}:rwX ${LOGS_DIR}"
+
+    setfacl -R -m u:www-data:rwX -m u:${USER}:rwX ${LOGS_DIR}
+    setfacl -dR -m u:www-data:rwX -m u:${USER}:rwX ${LOGS_DIR}
+fi
+
+if [ ! -d "${CACHE_DIR}" ]; then
+    echo "Creating logs directory ${CACHE_DIR}";
+    sudo mkdir -p "${CACHE_DIR}"
+    sudo chown -R ${USER}:${USER} "${CACHE_DIR}"
+
+    echo "setfacl -R -m u:www-data:rwX -m u:${USER}:rwX ${CACHE_DIR}"
+
+    setfacl -R -m u:www-data:rwX -m u:${USER}:rwX ${CACHE_DIR}
+    setfacl -dR -m u:www-data:rwX -m u:${USER}:rwX ${CACHE_DIR}
+fi
+
+cd "${CODE_DIR}/docker/dev"
 
 case ${COMMAND} in
   start|restart)
@@ -75,23 +109,3 @@ case ${COMMAND} in
     "
     ;;
 esac
-
-if [[ ! -e "$DATA_DIR" ]]; then
-    echo "Creating data directory $DATA_DIR";
-    sudo mkdir -p "$DATA_DIR"
-fi
-
-if [[ ! -e "$DATA_DIR" ]]; then
-    echo "Creating logs directory $DATA_DIR";
-    sudo mkdir -p -m 0777 "$LOG_DIR"
-fi
-
-if [[ ! -e "$CODE_DIR" ]]; then
-    echo "Creating code base directory $CODE_DIR and cloning";
-    mkdir -p "$CODE_DIR";
-    cd "$CODE_DIR";
-    git clone git@cod3r.co.uk:repos/recipes.git
-fi
-
-docker exec -it recipes_web /bin/bash -c "setfacl -R -m u:www-data:rwX -m u:app:rwX /app/var"
-docker exec -it recipes_web /bin/bash -c "setfacl -dR -m u:www-data:rwX -m u:app:rwX /app/var"

@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Taggroups list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for tagGroup in tagGroups %}
+            <tr>
+                <td><a href="{{ path('admin_tag-group_show', { 'id': tagGroup.id }) }}">{{ tagGroup.id }}</a></td>
+                <td>{{ tagGroup.name }}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('admin_tag-group_show', { 'id': tagGroup.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('admin_tag-group_edit', { 'id': tagGroup.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('admin_tag-group_new') }}">Create a new tagGroup</a>
+        </li>
+    </ul>
+{% endblock %}

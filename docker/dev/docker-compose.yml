@@ -8,8 +8,6 @@ services:
     environment:
       - TERM=xterm
       - ENV=dev
-      - XDEBUG_CONFIG=idekey=PHPSTORM remote_host=192.168.0.50
-      - PHP_IDE_CONFIG=serverName=dev.recipes.co.uk
       - SSH_AUTH_SOCK=/tmp/agent.sock
     links:
       - db
@@ -18,11 +16,13 @@ services:
       - "80:80"
       - "443:443"
     volumes:
-      - /codebase/recipes/:/app
-      - /data/recipes/:/data
-      - ${SSH_AUTH_SOCK}:/tmp/agent.sock
+      - ../../:/app/site/
+      - ../../data/cache/:/app/site/var/cache/
+      - ../../data/logs/:/app/site/var/logs/
       - ~/.ssh:/app/.ssh
       - ~/.gitconfig:/app/.gitconfig
+      - ${SSH_AUTH_SOCK}:/tmp/agent.sock
+
   db:
     image: "mariadb:latest"
     container_name: recipes_db
@@ -33,7 +33,7 @@ services:
     ports:
       - "3306:3306"
     volumes:
-      - /data/recipes/mysql/:/var/lib/mysql
+      - ../../data/mysql/:/var/lib/mysql
 
   mailhog:
     container_name: recipes_mailhog
@@ -54,4 +54,4 @@ services:
       - db
     restart: always
     ports:
-     - 9999:80
+     - 8080:80
