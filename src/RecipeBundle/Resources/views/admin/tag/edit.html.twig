@@ -1,0 +1,14 @@
+{% extends 'RecipeBundle::layout.html.twig' %}
+
+{% block body %}
+    <h1>Edit Tag</h1>
+
+    {{ form_start(edit_form) }}
+        {{ form_widget(edit_form) }}
+
+        <div class="button-bar">
+            <a class="button round secondary" href="{{ path('admin_tag_index') }}">Back</a>
+            <input class="button round success" type="submit" value="Save" />
+        </div>
+    {{ form_end(edit_form) }}
+{% endblock %}

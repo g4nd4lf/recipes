@@ -1,5 +1,16 @@
 body {
-  background: #fff;
+  background: url('../images/wood-texture.jpg');
+}
+
+.container {
+  position: relative;
+  top: 20px;
+}
+
+.content {
+  background: $white;
+  min-height: rem-calc(500);
+  padding: rem-calc(20);
 }
 
 button.radius, .button.radius {
@@ -8,4 +19,13 @@ button.radius, .button.radius {
 
 button.round, .button.round {
   border-radius: 6px;
+}
+
+.list {
+  padding: rem-calc(20);
+  border: 1px solid $light-gray;
+}
+
+.button-bar {
+  margin: rem-calc(20) 0 rem-calc(20) 0;
 }

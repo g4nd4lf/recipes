@@ -1,0 +1,30 @@
+{% extends 'RecipeBundle::layout.html.twig' %}
+
+{% block body %}
+    <h1>{{ recipe.name }}</h1>
+
+    <div class="row recipe-meta">
+        <div class="medium-4 columns">
+            <b>Servings:</b> {{ recipe.servings }}
+        </div>
+        <div class="medium-4 columns">
+            <b>Prep time:</b> {{ recipe.prepTime }} minutes
+        </div>
+        <div class="medium-4 columns">
+            <b>Cooking time:</b> {{ recipe.cookingTime }} minutes
+        </div>
+    </div>
+
+    <h3>Summary</h3>
+    <p>{{ recipe.summary }}</p>
+
+    <h3>Method</h3>
+    <p>{{ recipe.method }}</p>
+
+    <h3>Ingredients</h3>
+    <p>{{ recipe.ingredients }}</p>
+
+    <br>
+    <a class="button round secondary" href="{{ path('admin_recipe_index') }}">Back</a>
+    <a class="button round success" href="{{ path('admin_recipe_edit', { 'id': recipe.id }) }}">Edit</a>
+{% endblock %}

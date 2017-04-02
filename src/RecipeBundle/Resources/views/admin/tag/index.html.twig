@@ -1,0 +1,21 @@
+{% extends 'RecipeBundle::layout.html.twig' %}
+
+{% block body %}
+    <h1>Tags</h1>
+    <div class="list">
+        {% for tag in tags %}
+            <div class="row">
+                <div class="medium-6 columns">
+                    {{ tag.name }}
+                </div>
+                <div class="medium-6 columns">
+                    <a class="button round secondary" href="{{ path('admin_tag_edit', { 'id': tag.id }) }}">edit</a>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="button-bar">
+        <a class="button round success" href="{{ path('admin_tag_new') }}">Create</a>
+    </div>
+{% endblock %}

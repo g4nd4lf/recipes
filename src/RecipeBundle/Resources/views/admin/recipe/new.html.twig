@@ -1,0 +1,11 @@
+{% extends 'RecipeBundle::layout.html.twig' %}
+
+{% block body %}
+    <h1>New Recipe</h1>
+
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+        <input class="button round success" type="submit" value="Create" />
+        <a class="button round secondary" href="{{ path('admin_recipe_index') }}">Back</a>
+    {{ form_end(form) }}
+{% endblock %}

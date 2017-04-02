@@ -1,0 +1,16 @@
+{% extends 'RecipeBundle::layout.html.twig' %}
+
+{% block body %}
+    {% for recipe in recipes %}
+        <div class="row">
+            <div class="medium-8 columns">
+                <h3>{{ recipe.name }}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="medium-8 columns">
+                {{ recipe.summary }}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

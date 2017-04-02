@@ -45,15 +45,15 @@
 // 1. Global
 // ---------
 
-$global-font-size: 100%;
+$global-font-size: 14px;
 $global-width: rem-calc(1000);
 $global-lineheight: 1.5;
 $foundation-palette: (
-        primary: #ffffff,
+        primary:   #000,
         secondary: #777,
-        success: #3adb76,
-        warning: #ffae00,
-        alert: #ec5840,
+        success:   #3adb76,
+        warning:   #ffae00,
+        alert:     #ec5840,
 );
 
 $white       : #FFFFFF;
@@ -76,6 +76,7 @@ $oil         : #333333;
 $jet         : #222222;
 $black       : #000000;
 $dark-grey   : #7a7a7a;
+$slate       : #393939;
 
 // We use these as default colors throughout
 $primary-color: #bfadd7;
@@ -107,7 +108,7 @@ $font-family-monospace: Consolas, "Liberation Mono", Courier, monospace;
 $font-weight-normal: normal;
 $font-weight-bold: bold;
 
-$body-background: $white;
+$body-background: $slate;
 $body-font-color: $black;
 $body-font-family: $font-family-sans-serif;
 $body-antialiased: true;
@@ -148,26 +149,26 @@ $block-grid-max: 8;
 // 4. Base Typography
 // ------------------
 
-$header-font-family: 'Eordeoghlakat';
-$header-font-weight: normal;
+$header-font-family: 'Open Sans';
+$header-font-weight: bold;
 $header-font-style: normal;
 $font-family-monospace: Consolas, 'Liberation Mono', Courier, monospace;
 $header-sizes: (
         small: (
                 'h1': 25,
                 'h2': 22,
-                'h3': 20,
-                'h4': 18,
-                'h5': 16,
-                'h6': 14,
+                'h3': 16,
+                'h4': 14,
+                'h5': 12,
+                'h6': 10,
         ),
         medium: (
                 'h1': 25,
                 'h2': 22,
-                'h3': 20,
-                'h4': 18,
-                'h5': 16,
-                'h6': 14,
+                'h3': 16,
+                'h4': 14,
+                'h5': 12,
+                'h6': 10,
         ),
 );
 $header-color: inherit;

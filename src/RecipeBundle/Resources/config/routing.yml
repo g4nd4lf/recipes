@@ -1,0 +1,6 @@
+app:
+    resource: '@RecipeBundle/Controller/'
+    type: annotation
+admin:
+    resource: '@RecipeBundle/Controller/Admin/'
+    type: annotation
