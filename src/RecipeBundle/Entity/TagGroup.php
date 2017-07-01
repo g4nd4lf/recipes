@@ -3,15 +3,22 @@
 namespace RecipeBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * Tag Group
  *
  * @ORM\Table(name="tag_group")
- * @ORM\Entity()
+ * @ORM\Entity(repositoryClass="RecipeBundle\Repository\TagGroupRepository")
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  */
 class TagGroup
 {
+    use SoftDeleteableEntity;
+    use TimestampableEntity;
+
     /**
      * @var int
      *
@@ -27,16 +34,6 @@ class TagGroup
      * @ORM\Column(name="name", type="string", length=150, nullable=false)
      */
     private $name;
-
-    /**
-     * Tag Group constructor.
-     */
-    public function __construct()
-    {
-        $this->createdAt = new \DateTime;
-        $this->updatedAt = new \DateTime;
-    }
-
 
     /**
      * Get id

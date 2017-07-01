@@ -5,19 +5,26 @@ namespace RecipeBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * Recipe
  *
  * @ORM\Table(name="recipe")
  * @ORM\Entity(repositoryClass="RecipeBundle\Repository\RecipeRepository")
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  */
 class Recipe
 {
+    use SoftDeleteableEntity;
+    use TimestampableEntity;
+
     /**
      * @var int
      *
-     * @ORM\Column(name="id", type="integer")
+     * @ORM\Column(type="integer")
      * @ORM\Id
      * @ORM\GeneratedValue(strategy="AUTO")
      */
@@ -26,49 +33,49 @@ class Recipe
     /**
      * @var string $name
      *
-     * @ORM\Column(name="name", type="string", length=150, nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=false)
      */
     private $name;
 
     /**
      * @var string $summary
      *
-     * @ORM\Column(name="summary", type="string", length=1024, nullable=true)
+     * @ORM\Column(type="string", length=1024, nullable=true)
      */
     private $summary;
 
     /**
      * @var string $method
      *
-     * @ORM\Column(name="method", type="string", length=65535, nullable=true)
+     * @ORM\Column(type="string", length=65535, nullable=true)
      */
     private $method;
 
     /**
      * @var string $ingredients
      *
-     * @ORM\Column(name="ingredients", type="string", length=65535, nullable=true)
+     * @ORM\Column(type="string", length=65535, nullable=true)
      */
     private $ingredients;
 
     /**
      * @var integer $servings
      *
-     * @ORM\Column(name="servings", type="smallint", nullable=false, options={"default":1})
+     * @ORM\Column(type="smallint", nullable=false, options={"default":1})
      */
     private $servings;
 
     /**
      * @var integer $prepTime
      *
-     * @ORM\Column(name="prepTime", type="smallint", nullable=true)
+     * @ORM\Column(type="smallint", nullable=true)
      */
     private $prepTime;
 
     /**
      * @var integer $cookingTime
      *
-     * @ORM\Column(name="cookingTime", type="smallint", nullable=true)
+     * @ORM\Column(type="smallint", nullable=true)
      */
     private $cookingTime;
 
@@ -76,23 +83,8 @@ class Recipe
      * @var Collection $tags
      *
      * @ORM\ManyToMany(targetEntity="Tag", inversedBy="recipes")
-     * @ORM\JoinTable(name="recipe_tags")
      */
     private $tags;
-
-    /**
-     * @var \DateTime $createdAt
-     *
-     * @ORM\Column(name="createdAt", type="datetime", nullable=false)
-     */
-    private $createdAt;
-
-    /**
-     * @var \DateTime $updatedAt
-     *
-     * @ORM\Column(name="updatedAt", type="datetime", nullable=false)
-     */
-    private $updatedAt;
 
     /**
      * Recipe constructor.
@@ -100,9 +92,6 @@ class Recipe
     public function __construct()
     {
         $this->tags = new ArrayCollection;
-
-        $this->createdAt = new \DateTime;
-        $this->updatedAt = new \DateTime;
     }
 
     /**
@@ -281,54 +270,6 @@ class Recipe
     public function getCookingTime()
     {
         return $this->cookingTime;
-    }
-
-    /**
-     * Set createdAt
-     *
-     * @param \DateTime $createdAt
-     *
-     * @return Recipe
-     */
-    public function setCreatedAt($createdAt)
-    {
-        $this->createdAt = $createdAt;
-
-        return $this;
-    }
-
-    /**
-     * Get createdAt
-     *
-     * @return \DateTime
-     */
-    public function getCreatedAt()
-    {
-        return $this->createdAt;
-    }
-
-    /**
-     * Set updatedAt
-     *
-     * @param \DateTime $updatedAt
-     *
-     * @return Recipe
-     */
-    public function setUpdatedAt($updatedAt)
-    {
-        $this->updatedAt = $updatedAt;
-
-        return $this;
-    }
-
-    /**
-     * Get updatedAt
-     *
-     * @return \DateTime
-     */
-    public function getUpdatedAt()
-    {
-        return $this->updatedAt;
     }
 
     /**

@@ -5,15 +5,22 @@ namespace RecipeBundle\Entity;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
+use Gedmo\Timestampable\Traits\TimestampableEntity;
 
 /**
  * Tag
  *
  * @ORM\Table(name="tag")
  * @ORM\Entity(repositoryClass="RecipeBundle\Repository\TagRepository")
+ * @Gedmo\SoftDeleteable(fieldName="deletedAt", timeAware=false)
  */
 class Tag
 {
+    use SoftDeleteableEntity;
+    use TimestampableEntity;
+
     /**
      * @var int
      *
@@ -51,9 +58,6 @@ class Tag
     public function __construct()
     {
         $this->recipes = new ArrayCollection;
-
-        $this->createdAt = new \DateTime;
-        $this->updatedAt = new \DateTime;
     }
 
     /**
