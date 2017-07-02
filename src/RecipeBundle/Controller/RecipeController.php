@@ -13,11 +13,10 @@ use Symfony\Component\HttpFoundation\Request;
 class RecipeController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
-     * @param Request $request
+     * @Route("/", name="home")
      * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction(Request $request)
+    public function indexAction()
     {
         $em = $this->getDoctrine()->getManager();
 

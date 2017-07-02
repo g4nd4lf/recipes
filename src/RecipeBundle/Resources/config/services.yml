@@ -1,0 +1,4 @@
+services:
+    form_authenticator:
+          class: RecipeBundle\Security\FormAuthenticator
+          arguments: ["@router", "@security.password_encoder"]

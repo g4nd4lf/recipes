@@ -4,3 +4,10 @@ app:
 admin:
     resource: '@RecipeBundle/Controller/Admin/'
     type: annotation
+
+login:
+    path:     /login
+    defaults: { _controller: "RecipeBundle:Security:login" }
+
+logout:
+    path:     /logout

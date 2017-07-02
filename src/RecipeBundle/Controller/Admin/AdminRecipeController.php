@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
  * Class AdminRecipeController
  * @package RecipeBundle\Controller
  *
- * @Route("admin/recipes")
+ * @Route("/admin/recipes")
  */
 class AdminRecipeController extends Controller
 {
