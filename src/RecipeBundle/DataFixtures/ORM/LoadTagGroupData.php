@@ -33,11 +33,12 @@ class LoadTagGroupData extends AbstractFixture implements OrderedFixtureInterfac
     public function load(ObjectManager $manager)
     {
         $data = [
-            ['name' => 'Ingredients'],
-            ['name' => 'Diets'],
             ['name' => 'Baking'],
-            ['name' => 'Events'],
+            ['name' => 'Courses'],
             ['name' => 'Cuisines'],
+            ['name' => 'Diet'],
+            ['name' => 'Ingredients'],
+            ['name' => 'Seasonal'],
         ];
 
         $this->createFixtures($data, $manager);

@@ -1,0 +1,9 @@
+**/npm-debug.log
+**/package.json
+**/Gruntfile.js
+**/bootstrap.php.cache
+**/bundles/
+**/sass/
+**/.sass-cache/
+**/node_modules/
+.git

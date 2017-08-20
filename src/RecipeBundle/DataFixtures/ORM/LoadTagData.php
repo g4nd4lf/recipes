@@ -32,19 +32,41 @@ class LoadTagData extends AbstractFixture implements OrderedFixtureInterface, Co
      */
     public function load(ObjectManager $manager)
     {
-        $data = [
+        $diet = [
             [
                 'name' => 'Vegetarian',
-                'group' => 'Diets',
+                'group' => 'Diet',
             ],
             [
                 'name' => 'Vegan',
-                'group' => 'Diets',
+                'group' => 'Diet',
             ],
             [
-                'name' => 'Christmas',
-                'group' => 'Events',
+                'name' => 'Healthy',
+                'group' => 'Diet',
             ],
+        ];
+
+        $seasonal = [
+            [
+                'name' => 'Christmas',
+                'group' => 'Seasonal',
+            ],
+            [
+                'name' => 'Easter',
+                'group' => 'Seasonal',
+            ],
+            [
+                'name' => 'Bonfire Night',
+                'group' => 'Seasonal',
+            ],
+            [
+                'name' => 'Halloween',
+                'group' => 'Seasonal',
+            ],
+        ];
+
+        $baking = [
             [
                 'name' => 'Cakes',
                 'group' => 'Baking',
@@ -57,8 +79,27 @@ class LoadTagData extends AbstractFixture implements OrderedFixtureInterface, Co
                 'name' => 'Biscuits',
                 'group' => 'Baking',
             ],
+        ];
+
+        $ingredients = [
             [
-                'name' => 'Peppers',
+                'name' => 'Bread',
+                'group' => 'Ingredients',
+            ],
+            [
+                'name' => 'Cheese',
+                'group' => 'Ingredients',
+            ],
+            [
+                'name' => 'Chocolate',
+                'group' => 'Ingredients',
+            ],
+            [
+                'name' => 'Eggs',
+                'group' => 'Ingredients',
+            ],
+            [
+                'name' => 'Fruit',
                 'group' => 'Ingredients',
             ],
             [
@@ -66,9 +107,32 @@ class LoadTagData extends AbstractFixture implements OrderedFixtureInterface, Co
                 'group' => 'Ingredients',
             ],
             [
+                'name' => 'Pasta',
+                'group' => 'Ingredients',
+            ],
+            [
+                'name' => 'Peppers',
+                'group' => 'Ingredients',
+            ],
+            [
+                'name' => 'Potatoes',
+                'group' => 'Ingredients',
+            ],
+            [
+                'name' => 'Rice',
+                'group' => 'Ingredients',
+            ],
+            [
                 'name' => 'Tomatoes',
                 'group' => 'Ingredients',
             ],
+            [
+                'name' => 'Vegetables',
+                'group' => 'Ingredients',
+            ],
+        ];
+
+        $cuisines = [
             [
                 'name' => 'Mexican',
                 'group' => 'Cuisines',
@@ -89,7 +153,62 @@ class LoadTagData extends AbstractFixture implements OrderedFixtureInterface, Co
                 'name' => 'Thai',
                 'group' => 'Cuisines',
             ],
+            [
+                'name' => 'Russian',
+                'group' => 'Cuisines',
+            ],
+            [
+                'name' => 'African',
+                'group' => 'Cuisines',
+            ],
         ];
+
+
+        $courses = [
+            [
+                'name' => 'Breakfast',
+                'group' => 'Courses',
+            ],
+            [
+                'name' => 'Brunch',
+                'group' => 'Courses',
+            ],
+            [
+                'name' => 'Desserts',
+                'group' => 'Courses',
+            ],
+            [
+                'name' => 'Main Meals',
+                'group' => 'Courses',
+            ],
+            [
+                'name' => 'Lunches',
+                'group' => 'Courses',
+            ],
+            [
+                'name' => 'Salads',
+                'group' => 'Courses',
+            ],
+            [
+                'name' => 'Sauces',
+                'group' => 'Courses',
+            ],
+            [
+                'name' => 'Snacks',
+                'group' => 'Courses',
+            ],
+            [
+                'name' => 'Sandwiches',
+                'group' => 'Courses',
+            ],
+            [
+                'name' => 'Starters',
+                'group' => 'Courses',
+            ],
+        ];
+
+
+        $data = array_merge($diet, $seasonal, $baking, $ingredients, $cuisines, $courses);
 
         $this->createFixtures($data, $manager);
     }
